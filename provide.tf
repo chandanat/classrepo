@@ -3,3 +3,8 @@ provider "aws" {
   secret_key = ""
 
 }
+
+resource "aws_instance" "myec" {
+  instance_type = "t2.micro"
+
+}
