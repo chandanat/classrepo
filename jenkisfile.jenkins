@@ -13,6 +13,6 @@ stage(depoyment)
     {steps {withMaven(globalMavenSettingsConfig: '69a27122-77dd-488a-bc35-9acfa4f178f9', jdk: 'my-jdk', maven: 'Maven_home', mavenSettingsConfig: '5372fd6e-5eed-42cf-9109-1f7a04a0941a') {
     sh "mvn clean package"
 }} }
-    
+     
     }
 }
