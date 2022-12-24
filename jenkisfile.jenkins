@@ -1,0 +1,12 @@
+pipeline {
+    agent any
+    stages {
+        stage('scm checkout') //download the code from git
+        {steps {git branch: 'master', url: 'https://github.com/chandanat/maven-project'}} //if no branch is defined it will take master 
+        
+    stage(execute)
+    {steps {withMaven(globalMavenSettingsConfig: '--- Use system default settings or file path ---', jdk: 'my-jdk', maven: 'Maven_home', mavenSettingsConfig: '--- Use system default settings or file path ---') {
+    sh "mvn test"
+}}}
+    }
+}
