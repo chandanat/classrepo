@@ -1,1 +1,8 @@
 FROM ubuntu
+LABEL env="dev"
+LABEL author="Chandz"
+RUN apt-get update -y && \
+apt-get install apache2 -y
+WORKDIR /var/www/html
+COPY index.html index.html
+EXPOSE 80
