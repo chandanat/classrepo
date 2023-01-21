@@ -1,0 +1,13 @@
+FROM ubuntu
+LABEL owner="chandan"
+RUN apt-get update -y && \
+apt-get install gzip -y && \
+apt-get install wget -y && \
+apt-get install openjdk-8-jdk -y && \
+wget https://archive.apache.org/dist/tomcat/tomcat-8/v8.5.85/bin/apache-tomcat-8.5.85.tar.gz && \
+tar xvzf apache-tomcat-8.5.85.tar.gz
+WORKDIR /apache-tomcat-8.5.85/webapps
+RUN wget https://tomcat.apache.org/tomcat-7.0-doc/appdev/sample/sample.war
+CMD ["/apache-tomcat-8.5.85/bin/catalina.sh", "run"]
+
+

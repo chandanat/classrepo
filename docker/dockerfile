@@ -5,4 +5,5 @@ RUN apt-get update -y && \
 apt-get install apache2 -y
 WORKDIR /var/www/html
 COPY index.html index.html
+ADD source dest
 EXPOSE 80
