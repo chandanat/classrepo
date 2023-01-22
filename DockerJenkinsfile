@@ -4,7 +4,7 @@ agent any
 stages
 {
   stage('scm checkout')
-  {steps {git branch: 'master' , url: 'https://github.com/prakashk0301/maven-project' }}
+  {steps {git branch: 'master' , url: 'https://github.com/chandanat/classrepo' }}
   
   
   stage('code build')
@@ -14,6 +14,9 @@ stages
   
    stage ('docker build or create image')
   {steps { sh 'docker build -t chandanatale/mavenwebapp:01 .' }}
+
+  stage (docker push)
+  {st}
   
   
   }
