@@ -1,0 +1,18 @@
+pipeline
+{
+agent any
+stages
+{
+  stage('scm checkout')
+  {steps {git branch: 'master' , url: 'https://github.com/prakashk0301/maven-project' }}
+  
+  
+  stage('code build')
+  {steps { withMaven(globalMavenSettingsConfig: '--- Use system default settings or file path ---', jdk: 'my-jdk', maven: 'Maven_home', mavenSettingsConfig: '--- Use system default settings or file path ---')  
+  { sh 'mvn clean package' }
+  }}
+  
+  
+  
+  }
+}
