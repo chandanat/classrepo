@@ -1,0 +1,23 @@
+pipeline
+{
+agent any
+stages
+{
+stage('scm checkout')
+{steps {git branch: 'master' , url: 'https://github.com/prakashk0301/maven-project' }}
+
+
+stage('code build')
+{steps { withMaven(globalMavenSettingsConfig: '69a27122-77dd-488a-bc35-9acfa4f178f9', jdk: 'my-jdk', maven: 'Maven_home', mavenSettingsConfig: '5372fd6e-5eed-42cf-9109-1f7a04a0941a')   
+{ sh 'mvn clean package' }
+}}
+
+stage ('docker build or create image')
+{steps { sh 'docker build -t chandanatale/mavenwebapp:01 .' }}
+stage ('push docker image to docker regsitry')
+{steps { withDockerRegistry(credentialsId: '4d08f906-4a4a-470f-9761-1c93b8b90998', url: 'https://index.docker.io/v1/') 
+{ sh 'docker push chandanatale/mavenwebapp:01' } 
+}}
+
+}
+}
